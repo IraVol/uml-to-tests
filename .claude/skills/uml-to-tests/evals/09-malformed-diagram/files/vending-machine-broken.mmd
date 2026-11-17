@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> IDLE
+    IDLE --> HAS_COIN : insert coin
+    HAS_COIN --> IDLE : refund
+    HAS_COIN -> VENDING : select drink
+    VENDING --> IDLE : drink taken

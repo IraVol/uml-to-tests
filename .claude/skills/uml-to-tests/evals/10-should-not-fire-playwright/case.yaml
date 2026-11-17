@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 10-should-not-fire-playwright
+expected_outcome: |
+  Automation code is not this skill: it does not run and no results folder appears.
+context:
+  scaffold_script: place-files.sh

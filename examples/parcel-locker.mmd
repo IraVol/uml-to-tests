@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> FREE
+    FREE --> RESERVED : book (courier)
+    RESERVED --> OCCUPIED : place parcel (courier)
+    RESERVED --> FREE : expire (24 h after booking)
+    OCCUPIED --> FREE : enter pickup code [code is valid]

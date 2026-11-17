@@ -1,0 +1,67 @@
+@startuml
+title Food delivery — place an order
+
+actor Customer
+participant "Mobile app" as App
+participant "Order service" as Orders
+database "Orders DB" as DB
+participant "Payment gateway" as Pay
+participant "Restaurant" as Rest
+participant "Courier dispatch" as Dispatch
+
+Customer -> App : Tap "Place order"
+App -> Orders : POST /orders (cart, delivery address)
+Orders -> Rest : Check that the restaurant is open
+alt restaurant is closed
+  Rest --> Orders : closed
+  Orders --> App : 409 Restaurant closed
+  App --> Customer : "The restaurant is closed now"
+else restaurant is open
+  Rest --> Orders : open
+  opt promo code entered
+    Orders -> Orders : Validate promo code
+    alt promo code is valid
+      Orders -> Orders : Apply discount
+    else promo code is expired or unknown
+      Orders --> App : Promo warning
+      App --> Customer : "Promo code not applied"
+    end
+  end
+  Orders -> DB : Save order (PENDING_PAYMENT)
+  Orders -> Pay : Charge card
+  alt payment approved
+    Pay --> Orders : approved
+    Orders -> DB : Update order (PAID)
+    Orders -> Rest : Send order to the kitchen
+    alt restaurant accepts within 5 minutes
+      Rest --> Orders : accepted, ready in N minutes
+      Orders -> Dispatch : Request a courier
+      loop every 30 s until a courier is assigned, at most 10 attempts
+        Dispatch -> Dispatch : Find the nearest free courier
+      end
+      alt courier assigned
+        Dispatch --> Orders : courier id, ETA
+        Orders -> DB : Update order (COURIER_ASSIGNED)
+        Orders --> App : Order confirmed with ETA
+        App --> Customer : "Your order is on its way"
+      else no courier after 10 attempts
+        Dispatch --> Orders : no courier
+        Orders -> Pay : Refund
+        Orders -> DB : Update order (CANCELLED)
+        Orders --> App : Order cancelled, refund issued
+        App --> Customer : "No couriers available, money refunded"
+      end
+    else restaurant rejects or does not answer in 5 minutes
+      Orders -> Pay : Refund
+      Orders -> DB : Update order (CANCELLED)
+      Orders --> App : Order cancelled, refund issued
+      App --> Customer : "The restaurant cannot take your order"
+    end
+  else payment declined
+    Pay --> Orders : declined
+    Orders -> DB : Update order (PAYMENT_FAILED)
+    Orders --> App : 402 Payment declined
+    App --> Customer : "Payment declined, try another card"
+  end
+end
+@enduml

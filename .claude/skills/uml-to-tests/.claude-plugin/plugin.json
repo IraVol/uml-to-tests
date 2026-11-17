@@ -1,0 +1,26 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "uml-to-tests",
+  "version": "0.1.0",
+  "description": "Turns a behavioural UML diagram (state, activity, sequence, use case, data flow; Mermaid, PlantUML, Markdown or an image) into manual test cases and an HTML coverage report. A bundled checker fails the run if anything drawn is untested or a test expects something the diagram does not say.",
+  "author": {
+    "name": "Iryna Volnykh"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/IraVol/uml-to-tests",
+  "repository": "https://github.com/IraVol/uml-to-tests",
+  "keywords": [
+    "testing",
+    "test-design",
+    "qa",
+    "uml",
+    "mermaid",
+    "plantuml",
+    "state-transition",
+    "decision-table",
+    "coverage"
+  ],
+  "skills": [
+    "./"
+  ]
+}

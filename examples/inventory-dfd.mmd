@@ -1,0 +1,18 @@
+flowchart LR
+    %% kind: dfd
+    C[Customer]
+    W[Warehouse staff]
+    P1((Place order))
+    P2((Ship order))
+    P3((Restock))
+    O[(Orders)]
+    S[(Stock)]
+    C -- order details --> P1
+    S -- available quantity --> P1
+    P1 -- create order --> O
+    P1 -- order confirmation --> C
+    O -- open orders --> P2
+    P2 -- decrement stock --> S
+    P2 -- mark order shipped --> O
+    W -- delivery note --> P3
+    P3 -- save quantity --> S

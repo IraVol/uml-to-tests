@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 01-state-door-lock
+expected_outcome: |
+  A full state × event design: every transition, both guard-false cases and all six not-accepted events tested as "state unchanged"; no invented system responses.
+context:
+  scaffold_script: place-files.sh

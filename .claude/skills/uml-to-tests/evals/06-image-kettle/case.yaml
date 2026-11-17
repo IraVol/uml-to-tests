@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 06-image-kettle
+expected_outcome: |
+  A model read from the picture with exactly the drawn states and transitions, all items tested, the report marked as not machine-verified.
+context:
+  scaffold_script: place-files.sh

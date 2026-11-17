@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "qa-unicorns",
+  "description": "QA tools for Claude Code: test design from UML diagrams.",
+  "owner": {
+    "name": "Iryna Volnykh"
+  },
+  "plugins": [
+    {
+      "name": "uml-to-tests",
+      "source": "./.claude/skills/uml-to-tests",
+      "description": "Turns a behavioural UML diagram into manual test cases and an HTML coverage report, checked against the diagram.",
+      "category": "testing"
+    }
+  ]
+}

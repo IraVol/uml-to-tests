@@ -1,0 +1,6 @@
+stateDiagram-v2
+    [*] --> LOCKED
+    LOCKED --> UNLOCKED : enter PIN [PIN is correct]
+    LOCKED --> ALARM : enter PIN [third wrong PIN in a row]
+    UNLOCKED --> LOCKED : lock
+    ALARM --> LOCKED : reset (admin key)

@@ -1,0 +1,29 @@
+@startuml
+start
+:Open checkout;
+if (Cart is empty?) then (yes)
+  :Show "Your cart is empty";
+  stop
+endif
+if (Customer is logged in?) then (no)
+  :Ask to log in or continue as guest;
+endif
+switch (Payment method?)
+case (card)
+  :Charge card;
+  if (Card declined?) then (yes)
+    :Show payment error;
+    stop
+  endif
+case (PayPal)
+  :Redirect to PayPal;
+case (invoice)
+  if (Order total > 1000 EUR?) then (yes)
+    :Reject invoice payment;
+    stop
+  endif
+  :Create invoice;
+endswitch
+:Confirm order;
+stop
+@enduml

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 05-dfd-inventory
+expected_outcome: |
+  Every flow and CRUD cell tested, the unclear Restock write asked as a question, no delete tests.
+context:
+  scaffold_script: place-files.sh

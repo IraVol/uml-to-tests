@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 07-should-not-fire-convert
+expected_outcome: |
+  The diagram is converted; the skill does not run and no results folder appears.
+context:
+  scaffold_script: place-files.sh

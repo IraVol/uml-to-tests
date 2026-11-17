@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 08-markdown-several-diagrams
+expected_outcome: |
+  The ER diagram is skipped and named as skipped; the lifecycle is fully tested, both "trial ends" guards included, with no invented grace periods or retry counts.
+context:
+  scaffold_script: place-files.sh

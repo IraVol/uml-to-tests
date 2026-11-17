@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" font-family="Helvetica, Arial, sans-serif" font-size="14">
+  <title>Electric kettle — state machine</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <rect width="760" height="300" fill="#fff"/>
+  <circle cx="40" cy="150" r="9" fill="#333"/>
+  <line x1="49" y1="150" x2="110" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <rect x="110" y="125" width="120" height="50" rx="14" fill="#f4f4f4" stroke="#333"/>
+  <text x="170" y="155" text-anchor="middle" font-weight="bold">OFF</text>
+
+  <rect x="350" y="125" width="120" height="50" rx="14" fill="#f4f4f4" stroke="#333"/>
+  <text x="410" y="155" text-anchor="middle" font-weight="bold">HEATING</text>
+
+  <rect x="590" y="125" width="120" height="50" rx="14" fill="#f4f4f4" stroke="#333"/>
+  <text x="650" y="155" text-anchor="middle" font-weight="bold">BOILED</text>
+
+  <line x1="230" y1="140" x2="350" y2="140" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="290" y="110" text-anchor="middle">switch on</text>
+  <text x="290" y="128" text-anchor="middle">[water in kettle]</text>
+
+  <line x1="350" y1="162" x2="230" y2="162" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="290" y="185" text-anchor="middle">switch off</text>
+
+  <line x1="470" y1="150" x2="590" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="530" y="138" text-anchor="middle">water boils</text>
+
+  <path d="M650,175 C650,260 170,260 170,175" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="410" y="270" text-anchor="middle">auto off after 3 s</text>
+</svg>

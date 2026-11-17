@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: 02-activity-checkout
+expected_outcome: |
+  A decision table with 7 rules ("logged in?" is independent, so each outcome once), one test per rule, in Ukrainian; boundary tests at 999.99, 1000.00 and 1000.01 EUR; expectations only use actions on the diagram.
+context:
+  scaffold_script: place-files.sh

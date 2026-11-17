@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+actor Member
+actor Librarian
+rectangle Library {
+  usecase "Borrow book" as UC1
+  usecase "Return book" as UC2
+  usecase "Pay fine" as UC3
+  usecase "Check membership" as UC4
+  usecase "Add book to catalogue" as UC5
+}
+Member --> UC1
+Member --> UC2
+Librarian --> UC5
+UC1 ..> UC4 : <<include>>
+UC3 ..> UC2 : <<extend>>
+note right of UC1
+  Exception: a member with an unpaid fine cannot borrow.
+end note
+@enduml
